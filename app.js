@@ -1,16 +1,13 @@
-var express = require('express')
-var app = express()
+let app = require('./config/server.js')
 
-app.set('view engine', 'ejs')
+let rotaNoticia = require('./app/routes/noticias')
+let rotaHome = require('./app/routes/home')
+let rotaFormularioInclusaoNoticia = require('./app/routes/formulario_inclusao_noticia')
 
-app.get('/', function(req, res){
-  res.send('Home')
-})
-
-app.get('/tecnologia', function(req, res){
-  res.render('secao/tecnologia')
-})
+rotaHome(app)
+rotaNoticia(app)
+rotaFormularioInclusaoNoticia(app)
 
 app.listen(3000, function(){
-  console.log('Servidor funcionando na 3000')
+  console.log('Servidor funcionandfaceo na 3000')
 })
