@@ -1,8 +1,10 @@
 module.exports = function(app){
 
   app.get('/noticia', function(req,res){
+    let connection = app.config.dbConnection()
+    let model = app.app.models.noticiasModel
 
-    app.config.dbConnection().query('SELECT * FROM noticias WHERE id_noticia = 1;', function(error, result){
+    model.getNoticia(connection, function(error, result){
       res.render('noticias/noticia', {noticia: result})
     })
 
