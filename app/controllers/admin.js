@@ -14,7 +14,6 @@ module.exports.noticias_salvar = function (app, req, res) {
     req.assert('noticia', 'Noticia é obrigatorio').notEmpty()
 
     let errors = req.validationErrors()
-    console.log(errors)
     if (errors) {
         res.render('admin/form_add_noticia', { validacao: errors, noticia: noticia })
         return
